@@ -1,0 +1,25 @@
+export const colors = {
+  hotPink: '#FF1493',
+  hotPinkLight: '#FF69B4',
+  hotPinkDark: '#C71585',
+  purple: '#7B2CBF',
+  purpleLight: '#9D4EDD',
+  cream: '#FFF8F0',
+  creamDark: '#F5E6D3',
+  black: '#1A1A2E',
+  charcoal: '#2D2D44',
+  sky: '#87CEEB',
+  skyLight: '#B8E6FF',
+  skyGradientStart: '#E8F4FC',
+  skyGradientEnd: '#FFE4F0',
+  white: '#FFFFFF',
+  success: '#2ECC71',
+  warning: '#F39C12',
+  error: '#E74C3C',
+  leafGreen: '#52B788',
+  leafDark: '#2D6A4F',
+  gold: '#FFD700',
+  overlay: 'rgba(26, 26, 46, 0.75)',
+} as const;
+
+export type ColorKey = keyof typeof colors;
