@@ -110,3 +110,83 @@ sequenceDiagram
     Portfolio->>Data: portfolioProjects.ts
     Data-->>Portfolio: ProjectCard list
 ```
+
+## 7. Player spins in Butterfly Chance Garden
+
+```mermaid
+sequenceDiagram
+    actor Player
+    participant Screen
+    participant Engine
+    participant Dashboard
+
+    Player->>Screen: Tap Spin
+    Screen->>Engine: spinOnce(state)
+    Engine-->>Screen: SpinOutcome + tokens
+    Screen->>Dashboard: update empirical mean/variance
+```
+
+## 8. Chance Garden computes expected value
+
+```mermaid
+sequenceDiagram
+    participant Engine
+    participant Dashboard
+
+    Engine->>Engine: expectedValuePerSpin()
+    Engine-->>Dashboard: theoretical EV
+    Engine->>Engine: simulateBatch(1000)
+    Engine-->>Dashboard: empirical mean
+```
+
+## 9. Noise Nectar generates true state and noisy observation
+
+```mermaid
+sequenceDiagram
+    participant Engine
+    participant Screen
+
+    Engine->>Engine: sample X, N
+    Engine->>Engine: Y = X + N
+    Engine-->>Screen: NoisySample
+```
+
+## 10. MMSE helper estimates hidden nectar
+
+```mermaid
+sequenceDiagram
+    participant Screen
+    participant MMSE
+    participant Engine
+
+    Screen->>MMSE: mmseEstimate(Y, variances)
+    MMSE-->>Engine: X_hat
+    Engine-->>Screen: error, squaredError, runningMSE
+```
+
+## 11. Poisson Pond schedules obstacle arrivals
+
+```mermaid
+sequenceDiagram
+    participant Engine
+    participant ArrivalProcess
+
+    Engine->>ArrivalProcess: scheduleArrivals(lane, lambda, T)
+    ArrivalProcess-->>Engine: exponential inter-arrivals
+    Engine-->>Engine: place obstacles on lanes
+```
+
+## 12. Simulation mode runs many crossings
+
+```mermaid
+sequenceDiagram
+    actor Player
+    participant Screen
+    participant Engine
+
+    Player->>Screen: Simulate 100 crossings
+    loop 100 trials
+        Screen->>Engine: trial crossing
+    end
+    Engine-->>Screen: SimulationResult success rate
+```

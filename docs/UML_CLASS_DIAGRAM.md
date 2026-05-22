@@ -106,4 +106,85 @@ classDiagram
     App --> ScoreManager
     App --> PortfolioProfile
     PortfolioProfile --> ProjectCard
+
+    class ProbabilityWing {
+        +title: string
+        +routeToGames()
+    }
+
+    class ChanceGardenGame {
+        +pollenTokens: number
+        +spin()
+        +simulateBatch(n)
+    }
+
+    class SlotSymbol {
+        +probability: number
+        +nectarPayout: number
+    }
+
+    class SpinOutcome {
+        +reels: string[]
+        +nectarReward: number
+    }
+
+    class ProbabilityDashboard {
+        +theoreticalEV: number
+        +empiricalMean: number
+        +variance: number
+    }
+
+    class NoiseNectarGame {
+        +signalVariance: number
+        +noiseVariance: number
+        +generateSample()
+    }
+
+    class RandomWalkState {
+        +position: number
+    }
+
+    class NoisyObservation {
+        +trueX: number
+        +observationY: number
+    }
+
+    class MMSEEstimator {
+        +estimate(y)
+        +theoreticalMse()
+    }
+
+    class PoissonPondGame {
+        +lambda: number[]
+        +moveButterfly()
+        +runSimulations(n)
+    }
+
+    class ArrivalProcess {
+        +exponentialInterArrival(lambda)
+        +scheduleArrivals()
+    }
+
+    class ObstacleArrival {
+        +lane: number
+        +interArrival: number
+    }
+
+    class SimulationResult {
+        +success: number
+        +total: number
+    }
+
+    App --> ProbabilityWing
+    ProbabilityWing --> ChanceGardenGame
+    ProbabilityWing --> NoiseNectarGame
+    ProbabilityWing --> PoissonPondGame
+    ChanceGardenGame --> SlotSymbol
+    ChanceGardenGame --> SpinOutcome
+    ChanceGardenGame --> ProbabilityDashboard
+    NoiseNectarGame --> NoisyObservation
+    NoiseNectarGame --> MMSEEstimator
+    PoissonPondGame --> ArrivalProcess
+    PoissonPondGame --> ObstacleArrival
+    PoissonPondGame --> SimulationResult
 ```

@@ -39,6 +39,18 @@ Targets: iOS · Android · Web (PWA-friendly export)
 | **Larva Leaf Race** | Local multiplayer, grid algorithms, timers |
 | **Pupa Math Boost** | Data-driven math UI, balancing, progress |
 
+## Probability Wing
+
+**Probability Wing: Chance, Noise & Stochastic Flight** — educational labs for Probability & Stochastic Processes (fictional pollen/nectar only; no real-money gambling).
+
+| Mini-game | Math concepts |
+|-----------|----------------|
+| **Butterfly Chance Garden** | PMF, independence, E[R], variance, law of large numbers |
+| **Noise Nectar Rescue** | Noisy observations, MMSE, MSE, correlation |
+| **Poisson Pond Crossing** | Poisson arrivals, exponential inter-arrivals, simulation |
+
+Docs: [PROBABILITY_WING_DESIGN.md](docs/PROBABILITY_WING_DESIGN.md) · [PYTHON_PROBABILITY_RECREATION_GUIDE.md](docs/PYTHON_PROBABILITY_RECREATION_GUIDE.md)
+
 ## Portfolio features
 
 - **About Yasmine** — editable `src/data/yasmineProfile.ts`
@@ -84,6 +96,8 @@ See [docs/PYTHON_RECREATION_GUIDE.md](docs/PYTHON_RECREATION_GUIDE.md) — 4-wee
 | [UML_CLASS_DIAGRAM.md](docs/UML_CLASS_DIAGRAM.md) | Technical interviews |
 | [YASMINE_LEARNING_PATH.md](docs/YASMINE_LEARNING_PATH.md) | Yasmine |
 | [ATS_RESUME_KEYWORDS.md](docs/ATS_RESUME_KEYWORDS.md) | Resume tuning |
+| [PROBABILITY_WING_DESIGN.md](docs/PROBABILITY_WING_DESIGN.md) | Probability wing overview |
+| [YASMINE_PROBABILITY_INTERVIEW_PREP.md](docs/YASMINE_PROBABILITY_INTERVIEW_PREP.md) | Interview practice |
 
 ## Credits
 

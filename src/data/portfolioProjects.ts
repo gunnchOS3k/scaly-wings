@@ -36,6 +36,31 @@ export const portfolioProjects: PortfolioProject[] = [
     featured: true,
   },
   {
+    id: 'probability-wing',
+    title: 'Probability & Stochastic Processes Wing',
+    role: 'Educational game design (Scaly Wings module)',
+    stack: ['TypeScript', 'React Native', 'Simulation', 'MMSE', 'Poisson processes'],
+    problemSolved:
+      'Turn Probability and Stochastic Processes coursework into playable butterfly labs that connect theory, simulation, estimation, and Python recreation — without real-money gambling.',
+    skillsDemonstrated: [
+      'Probability simulation & expected value',
+      'Noise modeling & MMSE estimation',
+      'Poisson arrival processes',
+      'Educational UX & ethical game design',
+      'Technical documentation for recruiters',
+    ],
+    recruiterKeywords: [
+      'Stochastic processes',
+      'MMSE',
+      'Poisson process',
+      'Simulation',
+      'Data visualization',
+      'Python',
+    ],
+    link: 'https://github.com/gunnchOS3k/scaly-wings',
+    featured: true,
+  },
+  {
     id: 'finds-sharks',
     title: 'FINDS: Sharks From Space',
     role: 'Inspiration / collaboration placeholder',

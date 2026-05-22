@@ -33,7 +33,13 @@ export default function ArcadeScreen() {
   return (
     <ScreenShell>
       <Text style={styles.heading}>Butterfly Arcade</Text>
-      <Text style={styles.sub}>Three starter games — tap to play</Text>
+      <Text style={styles.sub}>Starter games + probability wing</Text>
+      <GameCard
+        title="Probability Wing"
+        description="Chance, noise & stochastic flight — Yasmine's probability course."
+        emoji="📊"
+        onPress={() => router.push('/probability-wing')}
+      />
       {GAMES.map((g) => (
         <GameCard
           key={g.route}

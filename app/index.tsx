@@ -24,6 +24,10 @@ export default function HomeScreen() {
       </View>
       <HotPinkButton label="Play Arcade" onPress={() => router.push('/arcade')} />
       <HotPinkButton
+        label="Probability Wing"
+        onPress={() => router.push('/probability-wing')}
+      />
+      <HotPinkButton
         label="About Yasmine"
         variant="secondary"
         onPress={() => router.push('/about-yasmine')}

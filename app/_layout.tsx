@@ -20,7 +20,20 @@ export default function RootLayout() {
         <Stack.Screen name="portfolio" options={{ title: 'Portfolio' }} />
         <Stack.Screen name="publish" options={{ title: 'Publishing' }} />
         <Stack.Screen name="python-recreation" options={{ title: 'Python Guide' }} />
+        <Stack.Screen name="probability-wing" options={{ title: 'Probability Wing' }} />
         <Stack.Screen name="games/flutter-flight" options={{ title: 'Flutter Flight' }} />
+        <Stack.Screen
+          name="games/probability-wing/chance-garden"
+          options={{ title: 'Chance Garden' }}
+        />
+        <Stack.Screen
+          name="games/probability-wing/noise-nectar"
+          options={{ title: 'Noise Nectar' }}
+        />
+        <Stack.Screen
+          name="games/probability-wing/poisson-pond"
+          options={{ title: 'Poisson Pond' }}
+        />
         <Stack.Screen name="games/larva-leaf-race" options={{ title: 'Larva Leaf Race' }} />
         <Stack.Screen name="games/pupa-math-boost" options={{ title: 'Pupa Math Boost' }} />
       </Stack>
