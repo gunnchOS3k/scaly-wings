@@ -157,3 +157,70 @@ def save_score(key, value):
 | `storage.ts` | `scores.py` |
 
 You do not need to match React UI — only **behavior**.
+
+---
+
+## A. Recreating Scaly Wings Pinball in Python
+
+```python
+class Ball:
+    def __init__(self):
+        self.x, self.y, self.vx, self.vy = 0, 0, 0, 0
+
+    def update(self, gravity=0.35):
+        self.vy += gravity
+        self.x += self.vx
+        self.y += self.vy
+
+class Flipper:
+    def kick(self, ball, side):
+        if side == "left":
+            ball.vx += 6
+        else:
+            ball.vx -= 6
+```
+
+Use pygame circles for bumpers, rects for flippers, `pygame.key` for Z/C flippers and Space launch.
+
+## B. Recreating Wing Run in Python
+
+```python
+class ButterflyPlayer:
+    def update(self, keys, platforms):
+        if keys[pygame.K_SPACE] and self.on_ground:
+            self.vy = -11
+        self.vy += 0.55
+        self.rect.x += self.vx
+        self.rect.y += self.vy
+        # resolve platform collisions
+```
+
+Camera: `offset_x = max(0, player.x - 200)`.
+
+## C. Recreating Controller Input in Python
+
+```python
+import pygame
+pygame.joystick.init()
+joy = pygame.joystick.Joystick(0)
+joy.init()
+if joy.get_button(0):  # A / Cross
+    actions["jump"] = True
+```
+
+Map L1/R1 to flippers, left stick to move.
+
+## D. Cocoon Console Mode Thinking in Python
+
+- `pygame.display.set_mode((1280, 720), FULLSCREEN)` when OS allows
+- External display = OS responsibility
+- Two joysticks → player 1 / player 2 dicts
+
+### Normalized input state pseudocode
+
+```python
+state = {"actions": {}, "moveX": 0.0, "moveY": 0.0}
+for action, pressed in raw.items():
+    if pressed:
+        state["actions"][action] = True
+```

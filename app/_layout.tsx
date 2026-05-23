@@ -21,6 +21,11 @@ export default function RootLayout() {
         <Stack.Screen name="publish" options={{ title: 'Publishing' }} />
         <Stack.Screen name="python-recreation" options={{ title: 'Python Guide' }} />
         <Stack.Screen name="probability-wing" options={{ title: 'Probability Wing' }} />
+        <Stack.Screen name="cocoon-console" options={{ title: 'Cocoon Console' }} />
+        <Stack.Screen name="controller-test" options={{ title: 'Controller Test' }} />
+        <Stack.Screen name="settings" options={{ title: 'Settings' }} />
+        <Stack.Screen name="games/pinball" options={{ title: 'Scaly Wings Pinball' }} />
+        <Stack.Screen name="games/wing-run" options={{ title: 'Wing Run' }} />
         <Stack.Screen name="games/flutter-flight" options={{ title: 'Flutter Flight' }} />
         <Stack.Screen
           name="games/probability-wing/chance-garden"

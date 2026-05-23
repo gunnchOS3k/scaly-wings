@@ -11,6 +11,9 @@ import {
   RACE_DURATION_SEC,
 } from './larvaLeafRaceEngine';
 import type { LarvaRaceState } from './types';
+import { createGameLoop } from '@/src/utils/gameLoop';
+import { useGameInput } from '@/src/input/useGameInput';
+import { isPressed } from '@/src/input/inputTypes';
 import { HotPinkButton } from '@/src/components/HotPinkButton';
 import { colors } from '@/src/theme/colors';
 import { spacing } from '@/src/theme/spacing';
@@ -23,6 +26,29 @@ export function LarvaLeafRaceScreen() {
   const [state, setState] = useState<LarvaRaceState>(() => createRaceState());
   const stateRef = useRef(state);
   stateRef.current = state;
+  const p1Input = useGameInput(1);
+  const p2Input = useGameInput(2);
+
+  useEffect(() => {
+    if (state.phase !== 'racing') return;
+    const loop = createGameLoop(() => {
+      setState((s) => {
+        if (s.phase !== 'racing') return s;
+        let n = s;
+        if (isPressed(p1Input, 'moveUp')) n = moveP1(n, 'up');
+        if (isPressed(p1Input, 'moveDown')) n = moveP1(n, 'down');
+        if (isPressed(p1Input, 'moveLeft')) n = moveP1(n, 'left');
+        if (isPressed(p1Input, 'moveRight')) n = moveP1(n, 'right');
+        if (isPressed(p2Input, 'moveUp')) n = moveP2(n, 'up');
+        if (isPressed(p2Input, 'moveDown')) n = moveP2(n, 'down');
+        if (isPressed(p2Input, 'moveLeft')) n = moveP2(n, 'left');
+        if (isPressed(p2Input, 'moveRight')) n = moveP2(n, 'right');
+        return n;
+      });
+    });
+    loop.start();
+    return () => loop.stop();
+  }, [p1Input, p2Input, state.phase]);
 
   useEffect(() => {
     if (state.phase !== 'racing') return;
@@ -95,7 +121,8 @@ export function LarvaLeafRaceScreen() {
         {scorePercent(state, 2)}%
       </Text>
       <Text style={styles.controls}>
-        P1: WASD (web) or left pad · P2: Arrows or right pad
+        P1: WASD / gamepad 1 / left pad · P2: Arrows / gamepad 2 / right pad · Assign in Cocoon
+        Console
       </Text>
       <View style={styles.boardWrap}>{renderGrid()}</View>
       {Platform.OS !== 'web' && state.phase === 'racing' && (

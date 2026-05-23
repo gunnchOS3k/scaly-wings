@@ -1,12 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Pressable,
-  useWindowDimensions,
-  Platform,
-} from 'react-native';
+import { View, Text, StyleSheet, Pressable, useWindowDimensions } from 'react-native';
 import { useRouter } from 'expo-router';
 import {
   createInitialState,
@@ -21,6 +14,8 @@ import type { FlutterFlightState } from './types';
 import { createGameLoop } from '@/src/utils/gameLoop';
 import { loadScore, saveScore } from '@/src/utils/storage';
 import { isNewHighScore } from '@/src/utils/scoring';
+import { useGameInput } from '@/src/input/useGameInput';
+import { isPressed } from '@/src/input/inputTypes';
 import { HotPinkButton } from '@/src/components/HotPinkButton';
 import { colors } from '@/src/theme/colors';
 import { spacing } from '@/src/theme/spacing';
@@ -36,6 +31,8 @@ export function FlutterFlightScreen() {
   const [highScore, setHighScore] = useState(0);
   const stateRef = useRef(state);
   stateRef.current = state;
+  const input = useGameInput(1);
+  const prevFlap = useRef(false);
 
   useEffect(() => {
     loadScore(FLUTTER_HIGH_SCORE_KEY).then(setHighScore);
@@ -67,16 +64,10 @@ export function FlutterFlightScreen() {
   }, []);
 
   useEffect(() => {
-    if (Platform.OS !== 'web') return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.code === 'Space') {
-        e.preventDefault();
-        handleFlap();
-      }
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [handleFlap]);
+    const flapNow = isPressed(input, 'flap') || isPressed(input, 'jump');
+    if (flapNow && !prevFlap.current) handleFlap();
+    prevFlap.current = flapNow;
+  }, [input, handleFlap]);
 
   return (
     <View style={styles.container}>

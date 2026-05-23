@@ -61,6 +61,39 @@ export const portfolioProjects: PortfolioProject[] = [
     featured: true,
   },
   {
+    id: 'scaly-pinball',
+    title: 'Scaly Wings Pinball',
+    role: 'Game developer',
+    stack: ['Expo', 'TypeScript', 'Physics', 'InputManager'],
+    problemSolved:
+      'Nostalgia-inspired tabletop pinball reimagined as butterfly garden nectar physics with cross-platform flippers.',
+    skillsDemonstrated: ['Physics simulation', 'Collision', 'Input abstraction', 'State machines'],
+    recruiterKeywords: ['Game physics', 'React Native', 'Controller input'],
+    featured: false,
+  },
+  {
+    id: 'wing-run',
+    title: 'Wing Run: Nectar Valley',
+    role: 'Level designer & developer',
+    stack: ['Expo', 'TypeScript', 'Camera', 'Collision'],
+    problemSolved:
+      'Original linear side-scrolling butterfly platformer with educational probability gates — no Nintendo assets.',
+    skillsDemonstrated: ['Platformer', 'Camera', 'Level design', 'Educational gates'],
+    recruiterKeywords: ['Side-scroller', 'Collision', 'Accessibility'],
+    featured: false,
+  },
+  {
+    id: 'cocoon-console',
+    title: 'Cocoon Console Mode',
+    role: 'Product designer',
+    stack: ['Expo', 'Gamepad API', 'Documentation'],
+    problemSolved:
+      'Phone-as-console experience with handheld, tabletop, and big-screen playbooks and controller assignment.',
+    skillsDemonstrated: ['Product thinking', 'Controller mapping', 'Local multiplayer'],
+    recruiterKeywords: ['Cross-platform', 'UX', 'Documentation'],
+    featured: false,
+  },
+  {
     id: 'finds-sharks',
     title: 'FINDS: Sharks From Space',
     role: 'Inspiration / collaboration placeholder',

@@ -38,6 +38,18 @@ Targets: iOS · Android · Web (PWA-friendly export)
 | **Flutter Flight** | Game loop, collision, cross-platform input |
 | **Larva Leaf Race** | Local multiplayer, grid algorithms, timers |
 | **Pupa Math Boost** | Data-driven math UI, balancing, progress |
+| **Scaly Wings Pinball** | Ball physics, flippers, bumpers, scoring |
+| **Wing Run: Nectar Valley** | Side-scroller, camera, platforms, math gates |
+
+## Cocoon Console Mode
+
+Handheld · tabletop · **big screen** (when OS supports mirroring/HDMI) · PS5/Xbox on **web** via Gamepad API.
+
+- Route: `/cocoon-console`
+- Controller test: `/controller-test`
+- Settings: `/settings`
+
+See [docs/COCOON_CONSOLE_MODE.md](docs/COCOON_CONSOLE_MODE.md) · [docs/CONTROLLER_SUPPORT.md](docs/CONTROLLER_SUPPORT.md)
 
 ## Probability Wing
 
@@ -98,6 +110,22 @@ See [docs/PYTHON_RECREATION_GUIDE.md](docs/PYTHON_RECREATION_GUIDE.md) — 4-wee
 | [ATS_RESUME_KEYWORDS.md](docs/ATS_RESUME_KEYWORDS.md) | Resume tuning |
 | [PROBABILITY_WING_DESIGN.md](docs/PROBABILITY_WING_DESIGN.md) | Probability wing overview |
 | [YASMINE_PROBABILITY_INTERVIEW_PREP.md](docs/YASMINE_PROBABILITY_INTERVIEW_PREP.md) | Interview practice |
+| [PINBALL_GAME_DESIGN.md](docs/PINBALL_GAME_DESIGN.md) | Pinball |
+| [WING_RUN_SIDE_SCROLLER_DESIGN.md](docs/WING_RUN_SIDE_SCROLLER_DESIGN.md) | Platformer |
+| [INPUT_ARCHITECTURE.md](docs/INPUT_ARCHITECTURE.md) | Input layer |
+| [BIG_SCREEN_PLAYBOOK.md](docs/BIG_SCREEN_PLAYBOOK.md) | HDMI / cast |
+
+## Testing checklist
+
+**Phone:** iPhone/Android portrait & landscape · touch zones
+
+**Web:** Chrome keyboard · Chrome gamepad (`/controller-test`)
+
+**Controllers:** PS5 Bluetooth · Xbox Bluetooth/USB · map L1/R1 flippers in Pinball
+
+**Games:** Flutter Flight · Larva 2P · Pinball · Wing Run · Cocoon Console
+
+**Big screen:** Android HDMI if supported · AirPlay/mirror · landscape readability
 
 ## Credits
 

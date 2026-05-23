@@ -190,3 +190,87 @@ sequenceDiagram
     end
     Engine-->>Screen: SimulationResult success rate
 ```
+
+## 13. Controller connects and assigns Player 1
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant Cocoon
+    participant InputManager
+    participant GamepadAPI
+
+    User->>Cocoon: Assign gamepad 0 to P1
+    Cocoon->>InputManager: assignGamepadToPlayer(1, 0)
+    InputManager->>GamepadAPI: listConnected()
+    GamepadAPI-->>InputManager: DualSense detected
+```
+
+## 14. Pinball flipper via controller
+
+```mermaid
+sequenceDiagram
+    participant Gamepad
+    participant InputManager
+    participant PinballEngine
+
+    Gamepad->>InputManager: L1 pressed
+    InputManager-->>PinballEngine: leftFlipper=true
+    PinballEngine->>PinballEngine: collideFlipper(ball)
+```
+
+## 15. Wing Run game loop
+
+```mermaid
+sequenceDiagram
+    participant Loop
+    participant InputManager
+    participant Engine
+    participant Camera
+
+    Loop->>InputManager: getState(1)
+    InputManager-->>Engine: moveRight, jump
+    Engine->>Engine: applyInput + tick
+    Engine->>Camera: followCamera(player.x)
+```
+
+## 16. Cocoon Console setup
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant CocoonScreen
+    participant Router
+
+    User->>CocoonScreen: Select Big Screen Mode
+    CocoonScreen-->>User: HDMI/mirror instructions
+    User->>Router: Open Wing Run
+```
+
+## 17. Local multiplayer assignment
+
+```mermaid
+sequenceDiagram
+    actor Host
+    participant Cocoon
+    participant LarvaRace
+
+    Host->>Cocoon: P1=gamepad0, P2=gamepad1
+    Host->>LarvaRace: Start race
+    LarvaRace->>LarvaRace: moveP1 from input P1
+    LarvaRace->>LarvaRace: moveP2 from input P2
+```
+
+## 18. Big Screen launch flow
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant OS
+    participant ScalyWings
+
+    User->>OS: Connect HDMI / AirPlay
+    OS-->>User: External display active
+    User->>ScalyWings: Landscape + Pinball
+    ScalyWings-->>User: Controller + touch backup
+```

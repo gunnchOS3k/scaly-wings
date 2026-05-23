@@ -28,6 +28,11 @@ export default function HomeScreen() {
         onPress={() => router.push('/probability-wing')}
       />
       <HotPinkButton
+        label="Cocoon Console Mode"
+        variant="secondary"
+        onPress={() => router.push('/cocoon-console')}
+      />
+      <HotPinkButton
         label="About Yasmine"
         variant="secondary"
         onPress={() => router.push('/about-yasmine')}

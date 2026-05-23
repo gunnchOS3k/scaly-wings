@@ -187,4 +187,120 @@ classDiagram
     PoissonPondGame --> ArrivalProcess
     PoissonPondGame --> ObstacleArrival
     PoissonPondGame --> SimulationResult
+
+    class InputManager {
+        +getState(playerId)
+        +setTouch()
+        +assignGamepadToPlayer()
+    }
+
+    class InputState {
+        +actions: map
+        +moveX: number
+        +moveY: number
+    }
+
+    class ControllerMapping {
+        +type: string
+        +gamepadIndex: number
+    }
+
+    class GamepadAdapter {
+        +poll()
+        +listConnected()
+    }
+
+    class TouchAdapter {
+        +pollTouch()
+    }
+
+    class KeyboardAdapter {
+        +pollKeyboard()
+    }
+
+    class CocoonConsoleMode {
+        +displayMode: string
+        +setupBigScreen()
+    }
+
+    class DisplayMode {
+        <<enumeration>>
+        handheld
+        tabletop
+        bigScreen
+    }
+
+    class PinballGame {
+        +tick()
+        +launch()
+    }
+
+    class PinballBall {
+        +x: number
+        +vx: number
+    }
+
+    class PinballFlipper {
+        +active: boolean
+    }
+
+    class PinballBumper {
+        +multiplier: number
+    }
+
+    class PinballTable {
+        +width: number
+        +height: number
+    }
+
+    class WingRunGame {
+        +tick()
+        +applyInput()
+    }
+
+    class ButterflyPlayer {
+        +x: number
+        +vy: number
+    }
+
+    class Platform {
+        +x: number
+        +w: number
+    }
+
+    class Hazard {
+        +kind: string
+    }
+
+    class Collectible {
+        +kind: string
+    }
+
+    class Checkpoint {
+        +x: number
+    }
+
+    class Level {
+        +platforms: Platform[]
+        +goalX: number
+    }
+
+    App --> InputManager
+    InputManager --> InputState
+    InputManager --> TouchAdapter
+    InputManager --> KeyboardAdapter
+    InputManager --> GamepadAdapter
+    App --> CocoonConsoleMode
+    CocoonConsoleMode --> DisplayMode
+    App --> PinballGame
+    PinballGame --> PinballBall
+    PinballGame --> PinballFlipper
+    PinballGame --> PinballBumper
+    PinballGame --> PinballTable
+    App --> WingRunGame
+    WingRunGame --> ButterflyPlayer
+    WingRunGame --> Platform
+    WingRunGame --> Hazard
+    WingRunGame --> Collectible
+    WingRunGame --> Level
 ```
