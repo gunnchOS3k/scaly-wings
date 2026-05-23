@@ -70,6 +70,30 @@ Docs: [PROBABILITY_WING_DESIGN.md](docs/PROBABILITY_WING_DESIGN.md) · [PYTHON_P
 - **Publishing checklist** — iOS & Android summaries
 - **Python recreation** — in-app summary + full guide in docs
 
+## Run and install on real devices
+
+For **Edmund’s Pixel 6a**, **Edmund’s iPhone**, and **Yasmine’s iPhone**:
+
+| Goal | Command |
+|------|---------|
+| **Expo Go QR** (fastest) | `npm run expo:go` |
+| Expo Go (tunnel / different Wi-Fi) | `npm run expo:go:tunnel` |
+| **Android APK** (Pixel 6a install) | `npm run android:apk` |
+| Register iPhones (iOS internal) | `npm run ios:register-devices` |
+| **Signed iOS internal app** | `npm run ios:internal` |
+| TestFlight candidate build | `npm run ios:testflight-build` |
+| Submit to TestFlight | `npm run ios:submit` |
+| Interactive menu | `npm run mobile:menu` |
+
+**First-time EAS setup (manual):** `npm install -g eas-cli` → `eas login` → `npm run eas:configure`
+
+Full guides:
+
+- [docs/DEVICE_TESTING_AND_BUILDS.md](docs/DEVICE_TESTING_AND_BUILDS.md) — main walkthrough
+- [docs/ANDROID_APK_PLAN.md](docs/ANDROID_APK_PLAN.md) — Pixel 6a APK
+- [docs/IOS_TESTFLIGHT_PLAN.md](docs/IOS_TESTFLIGHT_PLAN.md) — TestFlight path
+- [docs/BUILD_OUTPUT_CHECKLIST.md](docs/BUILD_OUTPUT_CHECKLIST.md) — printable checklist
+
 ## Local setup
 
 ```bash
@@ -77,7 +101,7 @@ git clone https://github.com/gunnchOS3k/scaly-wings.git
 cd scaly-wings
 npm install
 npm run check    # verify docs & structure
-npm run start    # Expo dev server
+npm run start    # Expo dev server (same as npm run expo:go)
 ```
 
 | Command | Action |

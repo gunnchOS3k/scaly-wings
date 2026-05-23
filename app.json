@@ -3,9 +3,9 @@
     "name": "Scaly Wings",
     "slug": "scaly-wings",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/images/icon.png",
-    "scheme": "scaly-wings",
+    "scheme": "scalywings",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
@@ -15,7 +15,8 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.gunnchos3k.scalywings"
+      "bundleIdentifier": "com.gunnchos3k.scalywings",
+      "buildNumber": "1"
     },
     "android": {
       "adaptiveIcon": {
@@ -23,6 +24,7 @@
         "backgroundColor": "#FF1493"
       },
       "package": "com.gunnchos3k.scalywings",
+      "versionCode": 1,
       "edgeToEdgeEnabled": true
     },
     "web": {
@@ -33,11 +35,6 @@
     "plugins": ["expo-router"],
     "experiments": {
       "typedRoutes": true
-    },
-    "extra": {
-      "eas": {
-        "projectId": "scaly-wings-placeholder"
-      }
     }
   }
 }

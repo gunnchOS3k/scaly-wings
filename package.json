@@ -8,7 +8,21 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "check": "node scripts/check-project-health.js"
+    "check": "node scripts/check-project-health.js",
+    "expo:go": "npx expo start",
+    "expo:go:tunnel": "npx expo start --tunnel",
+    "expo:web": "npx expo start --web",
+    "eas:login": "eas login",
+    "eas:configure": "eas build:configure",
+    "android:apk": "eas build -p android --profile preview-apk",
+    "android:aab": "eas build -p android --profile production-android",
+    "ios:register-devices": "eas device:create",
+    "ios:devices": "eas device:list",
+    "ios:internal": "eas build -p ios --profile preview-ios",
+    "ios:testflight-build": "eas build -p ios --profile production-ios",
+    "ios:submit": "eas submit -p ios --profile production-ios",
+    "build:all-preview": "npm run android:apk && npm run ios:internal",
+    "mobile:menu": "bash scripts/scaly-wings-mobile-build-menu.sh"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",
