@@ -9,6 +9,7 @@
       "distribution": "internal"
     },
     "preview-apk": {
+      "distribution": "internal",
       "android": {
         "buildType": "apk"
       }
@@ -28,11 +29,11 @@
     }
   },
   "submit": {
-    "production-ios": {
-      "ios": {}
-    },
     "production-android": {
       "android": {}
+    },
+    "production-ios": {
+      "ios": {}
     }
   }
 }

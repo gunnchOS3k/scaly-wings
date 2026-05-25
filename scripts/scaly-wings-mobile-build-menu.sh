@@ -14,12 +14,13 @@ show_menu() {
   echo "  1. Check environment"
   echo "  2. Start Expo Go QR code (LAN)"
   echo "  3. Start Expo Go QR code (tunnel)"
-  echo "  4. Build Android APK for Pixel 6a"
+  echo "  4. Build standalone Android APK (EAS — Pixel 6a)"
   echo "  5. Register iPhones for iOS internal"
   echo "  6. Build signed iOS internal app"
   echo "  7. Build iOS TestFlight candidate"
   echo "  8. Submit iOS build to TestFlight"
   echo "  9. Install Android APK over USB (adb)"
+  echo "  p. Pixel 6a standalone APK flow (full menu)"
   echo "  0. Exit"
   echo ""
 }
@@ -31,15 +32,16 @@ while true; do
     1) bash scripts/00-check-environment.sh ;;
     2) bash scripts/01-expo-go-qr.sh ;;
     3) bash scripts/01-expo-go-qr.sh --tunnel ;;
-    4) bash scripts/02-build-android-apk.sh ;;
+    4) bash scripts/build-standalone-android-apk.sh ;;
     5) bash scripts/03-register-ios-devices.sh ;;
     6) bash scripts/04-build-ios-internal.sh ;;
     7) bash scripts/05-build-ios-testflight.sh ;;
     8) bash scripts/06-submit-ios-testflight.sh ;;
     9)
       read -r -p "Path to APK file: " apk
-      bash scripts/07-install-android-apk-usb.sh "$apk"
+      bash scripts/install-downloaded-apk-usb.sh "$apk"
       ;;
+    p|P) bash scripts/scaly-wings-pixel6a-release-flow.sh ;;
     0)
       echo "Goodbye!"
       exit 0

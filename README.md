@@ -70,6 +70,26 @@ Docs: [PROBABILITY_WING_DESIGN.md](docs/PROBABILITY_WING_DESIGN.md) · [PYTHON_P
 - **Publishing checklist** — iOS & Android summaries
 - **Python recreation** — in-app summary + full guide in docs
 
+## Pixel 6a Standalone APK
+
+Use **Expo Go** or **local debug** builds while actively developing on the Mac. Use the **EAS preview APK** when you want Scaly Wings on Edmund’s Pixel 6a to behave like a normal installed app — **no USB-C, no Metro, Mac can be away**.
+
+| Goal | Command |
+|------|---------|
+| Fast dev preview (Expo Go) | `npm run expo:go` |
+| Native debug on device (needs Metro) | `npm run android:dev` |
+| **Standalone APK** (Pixel 6a, no Metro) | `npm run android:apk` |
+| Interactive Pixel 6a flow | `npm run pixel6a:apk-flow` |
+
+- `android:dev` may show *Unable to load script* after unplugging USB — that is expected for debug builds.
+- `android:apk` uses EAS cloud build profile `preview-apk`; JavaScript is bundled inside the APK.
+
+Guides:
+
+- [docs/PIXEL_6A_STANDALONE_APK_GUIDE.md](docs/PIXEL_6A_STANDALONE_APK_GUIDE.md)
+- [docs/ANDROID_DEBUG_VS_STANDALONE.md](docs/ANDROID_DEBUG_VS_STANDALONE.md)
+- [docs/APK_INSTALL_CHECKLIST.md](docs/APK_INSTALL_CHECKLIST.md)
+
 ## Run and install on real devices
 
 For **Edmund’s Pixel 6a**, **Edmund’s iPhone**, and **Yasmine’s iPhone**:
@@ -78,7 +98,8 @@ For **Edmund’s Pixel 6a**, **Edmund’s iPhone**, and **Yasmine’s iPhone**:
 |------|---------|
 | **Expo Go QR** (fastest) | `npm run expo:go` |
 | Expo Go (tunnel / different Wi-Fi) | `npm run expo:go:tunnel` |
-| **Android APK** (Pixel 6a install) | `npm run android:apk` |
+| Native Android debug (Metro) | `npm run android:dev` |
+| **Android APK** (Pixel 6a standalone) | `npm run android:apk` |
 | Register iPhones (iOS internal) | `npm run ios:register-devices` |
 | **Signed iOS internal app** | `npm run ios:internal` |
 | TestFlight candidate build | `npm run ios:testflight-build` |
@@ -89,6 +110,9 @@ For **Edmund’s Pixel 6a**, **Edmund’s iPhone**, and **Yasmine’s iPhone**:
 
 Full guides:
 
+- [docs/PIXEL_6A_STANDALONE_APK_GUIDE.md](docs/PIXEL_6A_STANDALONE_APK_GUIDE.md) — Edmund Pixel 6a standalone install
+- [docs/ANDROID_DEBUG_VS_STANDALONE.md](docs/ANDROID_DEBUG_VS_STANDALONE.md) — debug vs EAS APK
+- [docs/APK_INSTALL_CHECKLIST.md](docs/APK_INSTALL_CHECKLIST.md) — printable checklist
 - [docs/DEVICE_TESTING_AND_BUILDS.md](docs/DEVICE_TESTING_AND_BUILDS.md) — main walkthrough
 - [docs/ANDROID_APK_PLAN.md](docs/ANDROID_APK_PLAN.md) — Pixel 6a APK
 - [docs/IOS_TESTFLIGHT_PLAN.md](docs/IOS_TESTFLIGHT_PLAN.md) — TestFlight path

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build Android APK for Google Pixel 6a via EAS.
+# Build standalone Android APK for Pixel 6a (delegates to build-standalone-android-apk.sh).
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -7,34 +7,13 @@ cd "$ROOT"
 
 echo "=== Scaly Wings — Android APK (preview-apk) ==="
 echo ""
-echo "This creates an installable APK for Edmund's Pixel 6a (and other Android testers)."
+echo "This builds a STANDALONE APK (not app-debug.apk)."
+echo "See docs/PIXEL_6A_STANDALONE_APK_GUIDE.md"
 echo ""
-echo "YOU MUST DO THESE FIRST (manual — Cursor cannot do them for you):"
-echo "  1. npm install -g eas-cli"
-echo "  2. eas login          (Expo account — browser prompt)"
-echo "  3. npm run eas:configure   (links project; may create EAS project ID in app.json)"
-echo ""
-read -r -p "Have you completed eas login and eas:configure? [y/N] " ok
-if [[ ! "$ok" =~ ^[Yy]$ ]]; then
-  echo "Complete setup first, then re-run this script."
-  exit 1
-fi
-
-if [[ ! -d node_modules ]]; then
-  npm install
-fi
-
-echo ""
-echo "Starting EAS build: eas build -p android --profile preview-apk"
-echo "This runs in the cloud. Follow the URL to monitor progress."
+echo "First-time setup (manual):"
+echo "  npm install -g eas-cli"
+echo "  eas login"
+echo "  npm run eas:configure"
 echo ""
 
-eas build -p android --profile preview-apk
-
-echo ""
-echo "=== After build completes ==="
-echo "  • Open the EAS install link on your Pixel 6a and install Scaly Wings"
-echo "  • Or download the APK and run:"
-echo "      bash scripts/07-install-android-apk-usb.sh path/to/downloaded.apk"
-echo "  • You may need to allow 'Install unknown apps' for the browser/files app"
-echo ""
+bash scripts/build-standalone-android-apk.sh
