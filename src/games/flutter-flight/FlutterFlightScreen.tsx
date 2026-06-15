@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { View, Text, StyleSheet, Pressable, useWindowDimensions } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import {
   createInitialState,
   startGame,
@@ -23,6 +24,7 @@ import { typography } from '@/src/theme/typography';
 
 export function FlutterFlightScreen() {
   const router = useRouter();
+  const { t } = useTranslation();
   const { width, height } = useWindowDimensions();
   const gameHeight = Math.min(height * 0.55, 480);
   const [state, setState] = useState<FlutterFlightState>(() =>
@@ -72,7 +74,7 @@ export function FlutterFlightScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.hud}>
-        Score {state.score} · Best {highScore}
+        {t('games.score')} {state.score} · {t('games.best')} {highScore}
       </Text>
       <Pressable style={[styles.arena, { height: gameHeight }]} onPress={handleFlap}>
         <View style={styles.sky} />
@@ -110,25 +112,27 @@ export function FlutterFlightScreen() {
         />
         {state.phase === 'start' && (
           <View style={styles.overlay}>
-            <Text style={styles.overlayTitle}>Flutter Flight</Text>
-            <Text style={styles.overlaySub}>Tap or press Space to flap</Text>
+            <Text style={styles.overlayTitle}>{t('games.flutterFlight.title')}</Text>
+            <Text style={styles.overlaySub}>{t('games.flutterFlight.tapToFlap')}</Text>
           </View>
         )}
         {state.phase === 'gameover' && (
           <View style={styles.overlay}>
-            <Text style={styles.overlayTitle}>Game Over</Text>
-            <Text style={styles.overlaySub}>Score: {state.score}</Text>
+            <Text style={styles.overlayTitle}>{t('games.gameOver')}</Text>
+            <Text style={styles.overlaySub}>
+              {t('games.score')}: {state.score}
+            </Text>
           </View>
         )}
       </Pressable>
-      <HotPinkButton label="Flap!" onPress={handleFlap} />
+      <HotPinkButton label={t('games.flap')} onPress={handleFlap} />
       {state.phase === 'gameover' && (
         <HotPinkButton
-          label="Play Again"
+          label={t('games.playAgain')}
           onPress={() => setState(startGame(createInitialState(width, gameHeight)))}
         />
       )}
-      <HotPinkButton label="Back to Arcade" variant="secondary" onPress={() => router.back()} />
+      <HotPinkButton label={t('games.backToArcade')} variant="secondary" onPress={() => router.back()} />
     </View>
   );
 }

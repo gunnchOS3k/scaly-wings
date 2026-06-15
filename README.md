@@ -31,6 +31,34 @@ _Placeholder — add captures to `assets/screenshots/` after running on device._
 
 Targets: iOS · Android · Web (PWA-friendly export)
 
+## Multilingual Scaly Wings
+
+Scaly Wings supports **five languages** — a global, recruiter-ready feature for accessibility and cross-cultural design.
+
+| Language | Code | Why it matters |
+|----------|------|----------------|
+| English | `en` | Source language |
+| Arabic | `ar` | Yasmine — RTL layout support |
+| French | `fr` | Yasmine |
+| Spanish | `es` | Edmund |
+| Finnish | `fi` | Edmund (learning) |
+
+**Switch language:** Home screen (top) or **Settings → Language**. Preference persists across restarts. Device locale is used when no manual choice is saved.
+
+```bash
+npm run i18n:check    # validate locale JSON + key parity
+npm run expo:go       # test live switching
+```
+
+Docs:
+
+- [docs/LOCALIZATION_GUIDE.md](docs/LOCALIZATION_GUIDE.md)
+- [docs/ARABIC_RTL_SUPPORT.md](docs/ARABIC_RTL_SUPPORT.md)
+- [docs/TRANSLATION_REVIEW_WORKFLOW.md](docs/TRANSLATION_REVIEW_WORKFLOW.md)
+- [docs/LANGUAGE_PORTFOLIO_STORY.md](docs/LANGUAGE_PORTFOLIO_STORY.md)
+
+Draft translations need human review — see workflow doc. Arabic may prompt an app restart for full RTL layout.
+
 ## Games
 
 | Game | Skills demonstrated |

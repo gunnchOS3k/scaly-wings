@@ -1,29 +1,30 @@
-import { Text, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { ScreenShell } from '@/src/components/ScreenShell';
 import { GameCard } from '@/src/components/GameCard';
 import { ButterflyMascot } from '@/src/components/ButterflyMascot';
-import { probabilityWingMeta } from '@/src/data/probabilityTopics';
+import { LocalizedText } from '@/src/components/LocalizedText';
 import { colors } from '@/src/theme/colors';
 import { spacing } from '@/src/theme/spacing';
 import { typography } from '@/src/theme/typography';
 
-const PROB_GAMES = [
+const PROB_GAME_KEYS = [
   {
-    title: 'Butterfly Chance Garden',
-    description: 'Pollen tokens, PMF, expected value, variance, law of large numbers.',
+    titleKey: 'probability.games.chanceGarden.title',
+    descriptionKey: 'probability.games.chanceGarden.description',
     emoji: '🌸',
     route: '/games/probability-wing/chance-garden' as const,
   },
   {
-    title: 'Noise Nectar Rescue',
-    description: 'Hidden nectar, noisy sensors, MMSE estimation, MSE tracking.',
+    titleKey: 'probability.games.noiseNectar.title',
+    descriptionKey: 'probability.games.noiseNectar.description',
     emoji: '🌬️',
     route: '/games/probability-wing/noise-nectar' as const,
   },
   {
-    title: 'Poisson Pond Crossing',
-    description: 'λ-driven arrivals, exponential waits, crossing simulations.',
+    titleKey: 'probability.games.poissonPond.title',
+    descriptionKey: 'probability.games.poissonPond.description',
     emoji: '🪷',
     route: '/games/probability-wing/poisson-pond' as const,
   },
@@ -31,30 +32,29 @@ const PROB_GAMES = [
 
 export default function ProbabilityWingScreen() {
   const router = useRouter();
+  const { t } = useTranslation();
 
   return (
     <ScreenShell>
       <View style={styles.hero}>
         <ButterflyMascot size={72} />
-        <Text style={styles.title}>{probabilityWingMeta.title}</Text>
-        <Text style={styles.subtitle}>{probabilityWingMeta.subtitle}</Text>
+        <LocalizedText i18nKey="probability.fullTitle" style={styles.title} center />
+        <LocalizedText i18nKey="probability.learnSubtitle" style={styles.subtitle} center />
       </View>
       <View style={styles.disclaimer}>
-        <Text style={styles.disclaimerText}>{probabilityWingMeta.disclaimer}</Text>
+        <LocalizedText i18nKey="probability.disclaimer" style={styles.disclaimerText} />
       </View>
-      <Text style={styles.section}>Math Garden — three mini-labs</Text>
-      {PROB_GAMES.map((g) => (
+      <LocalizedText i18nKey="probability.mathGarden" style={styles.section} />
+      {PROB_GAME_KEYS.map((g) => (
         <GameCard
           key={g.route}
-          title={g.title}
-          description={g.description}
+          title={t(g.titleKey)}
+          description={t(g.descriptionKey)}
           emoji={g.emoji}
           onPress={() => router.push(g.route)}
         />
       ))}
-      <Text style={styles.docsHint}>
-        Syllabus mapping: docs/PROBABILITY_TO_GAME_MECHANICS.md · Python: docs/PYTHON_PROBABILITY_RECREATION_GUIDE.md
-      </Text>
+      <LocalizedText i18nKey="probability.docsHint" style={styles.docsHint} />
     </ScreenShell>
   );
 }
@@ -65,13 +65,11 @@ const styles = StyleSheet.create({
     fontSize: typography.sizes.xl,
     fontWeight: typography.weights.bold,
     color: colors.hotPink,
-    textAlign: 'center',
     marginTop: spacing.sm,
   },
   subtitle: {
     fontSize: typography.sizes.md,
     color: colors.black,
-    textAlign: 'center',
     marginTop: spacing.sm,
     lineHeight: 22,
   },
@@ -79,8 +77,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderRadius: 12,
     padding: spacing.md,
-    borderLeftWidth: 4,
-    borderLeftColor: colors.purple,
+    borderStartWidth: 4,
+    borderStartColor: colors.purple,
     marginBottom: spacing.lg,
   },
   disclaimerText: { color: colors.charcoal, lineHeight: 20, fontSize: typography.sizes.sm },

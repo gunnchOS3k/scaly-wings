@@ -1,5 +1,7 @@
 import { Text, StyleSheet, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { ScreenShell } from '@/src/components/ScreenShell';
+import { LocalizedText } from '@/src/components/LocalizedText';
 import { iosChecklist, androidChecklist } from '@/src/data/appStoreChecklist';
 import { colors } from '@/src/theme/colors';
 import { spacing } from '@/src/theme/spacing';
@@ -11,7 +13,9 @@ function ChecklistBlock({ title, items }: { title: string; items: typeof iosChec
       <Text style={styles.blockTitle}>{title}</Text>
       {items.map((item) => (
         <View key={item.id} style={styles.item}>
-          <Text style={styles.itemTitle}>{item.done ? '☑' : '☐'} {item.title}</Text>
+          <Text style={styles.itemTitle}>
+            {item.done ? '☑' : '☐'} {item.title}
+          </Text>
           <Text style={styles.itemDesc}>{item.description}</Text>
         </View>
       ))}
@@ -19,15 +23,16 @@ function ChecklistBlock({ title, items }: { title: string; items: typeof iosChec
   );
 }
 
+
 export default function PublishScreen() {
+  const { t } = useTranslation();
+
   return (
     <ScreenShell>
-      <Text style={styles.heading}>Publishing Checklist</Text>
-      <Text style={styles.sub}>
-        Full details in docs/APP_STORE_READINESS.md and docs/ANDROID_PLAY_STORE_READINESS.md
-      </Text>
-      <ChecklistBlock title="iOS App Store" items={iosChecklist} />
-      <ChecklistBlock title="Google Play" items={androidChecklist} />
+      <LocalizedText i18nKey="publish.title" style={styles.heading} />
+      <LocalizedText i18nKey="publish.subtitle" style={styles.sub} />
+      <ChecklistBlock title={t('publish.iosAppStore')} items={iosChecklist} />
+      <ChecklistBlock title={t('publish.googlePlay')} items={androidChecklist} />
     </ScreenShell>
   );
 }

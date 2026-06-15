@@ -1,8 +1,8 @@
 export type InputBadge = 'touch' | 'keyboard' | 'controller' | 'multiplayer' | 'bigScreen';
 
 export interface ArcadeEntry {
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
   emoji: string;
   route: string;
   section: 'core' | 'probability' | 'console' | 'tools';
@@ -12,8 +12,8 @@ export interface ArcadeEntry {
 
 export const ARCADE_GAMES: ArcadeEntry[] = [
   {
-    title: 'Flutter Flight',
-    description: 'Flap through glowing gates.',
+    titleKey: 'arcade.games.flutterFlight.title',
+    descriptionKey: 'arcade.games.flutterFlight.description',
     emoji: '🦋',
     route: '/games/flutter-flight',
     section: 'core',
@@ -21,8 +21,8 @@ export const ARCADE_GAMES: ArcadeEntry[] = [
     skills: ['Game loop', 'Collision'],
   },
   {
-    title: 'Larva Leaf Race',
-    description: 'Two larva · grid race · local multiplayer.',
+    titleKey: 'arcade.games.larvaLeafRace.title',
+    descriptionKey: 'arcade.games.larvaLeafRace.description',
     emoji: '🐛',
     route: '/games/larva-leaf-race',
     section: 'core',
@@ -30,8 +30,8 @@ export const ARCADE_GAMES: ArcadeEntry[] = [
     skills: ['Grid', 'Local MP'],
   },
   {
-    title: 'Pupa Math Boost',
-    description: 'Math speeds metamorphosis.',
+    titleKey: 'arcade.games.pupaMathBoost.title',
+    descriptionKey: 'arcade.games.pupaMathBoost.description',
     emoji: '📐',
     route: '/games/pupa-math-boost',
     section: 'core',
@@ -39,8 +39,8 @@ export const ARCADE_GAMES: ArcadeEntry[] = [
     skills: ['Ed-tech'],
   },
   {
-    title: 'Probability Wing',
-    description: 'Chance, noise & stochastic flight.',
+    titleKey: 'arcade.games.probabilityWing.title',
+    descriptionKey: 'arcade.games.probabilityWing.description',
     emoji: '📊',
     route: '/probability-wing',
     section: 'probability',
@@ -48,8 +48,8 @@ export const ARCADE_GAMES: ArcadeEntry[] = [
     skills: ['Probability', 'Estimation'],
   },
   {
-    title: 'Scaly Wings Pinball',
-    description: 'Nectar pearl · garden bumpers · wing flippers.',
+    titleKey: 'arcade.games.pinball.title',
+    descriptionKey: 'arcade.games.pinball.description',
     emoji: '🎮',
     route: '/games/pinball',
     section: 'console',
@@ -57,8 +57,8 @@ export const ARCADE_GAMES: ArcadeEntry[] = [
     skills: ['Physics', 'Collision'],
   },
   {
-    title: 'Wing Run: Nectar Valley',
-    description: 'Side-scrolling butterfly platformer.',
+    titleKey: 'arcade.games.wingRun.title',
+    descriptionKey: 'arcade.games.wingRun.description',
     emoji: '🌸',
     route: '/games/wing-run',
     section: 'console',
@@ -66,8 +66,8 @@ export const ARCADE_GAMES: ArcadeEntry[] = [
     skills: ['Platformer', 'Camera'],
   },
   {
-    title: 'Controller Test',
-    description: 'Debug gamepads & mapped actions.',
+    titleKey: 'arcade.games.controllerTest.title',
+    descriptionKey: 'arcade.games.controllerTest.description',
     emoji: '🕹️',
     route: '/controller-test',
     section: 'tools',
@@ -75,8 +75,8 @@ export const ARCADE_GAMES: ArcadeEntry[] = [
     skills: ['Controller Input'],
   },
   {
-    title: 'Cocoon Console Mode',
-    description: 'Handheld · tabletop · big screen setup.',
+    titleKey: 'arcade.games.cocoonConsole.title',
+    descriptionKey: 'arcade.games.cocoonConsole.description',
     emoji: '📺',
     route: '/cocoon-console',
     section: 'tools',
@@ -84,8 +84,8 @@ export const ARCADE_GAMES: ArcadeEntry[] = [
     skills: ['Product'],
   },
   {
-    title: 'Settings',
-    description: 'Mode, accessibility, input debug.',
+    titleKey: 'arcade.games.settings.title',
+    descriptionKey: 'arcade.games.settings.description',
     emoji: '⚙️',
     route: '/settings',
     section: 'tools',
@@ -93,3 +93,18 @@ export const ARCADE_GAMES: ArcadeEntry[] = [
     skills: ['UX'],
   },
 ];
+
+export const ARCADE_SECTION_KEYS = {
+  core: 'arcade.sections.core',
+  probability: 'arcade.sections.probability',
+  console: 'arcade.sections.console',
+  tools: 'arcade.sections.tools',
+} as const;
+
+export const BADGE_KEYS: Record<InputBadge, string> = {
+  touch: 'arcade.badges.touch',
+  keyboard: 'arcade.badges.keyboard',
+  controller: 'arcade.badges.controller',
+  multiplayer: 'arcade.badges.multiplayer',
+  bigScreen: 'arcade.badges.bigScreen',
+};

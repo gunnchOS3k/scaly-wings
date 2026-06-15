@@ -1,6 +1,8 @@
 import { Text, StyleSheet, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { ScreenShell } from '@/src/components/ScreenShell';
 import { SkillBadge } from '@/src/components/SkillBadge';
+import { LocalizedText } from '@/src/components/LocalizedText';
 import { yasmineProfile } from '@/src/data/yasmineProfile';
 import { colors } from '@/src/theme/colors';
 import { spacing } from '@/src/theme/spacing';
@@ -24,6 +26,7 @@ function Section({ title, body }: { title: string; body: string | string[] }) {
 }
 
 export default function AboutYasmineScreen() {
+  const { t } = useTranslation();
   const p = yasmineProfile;
   const s = p.sections;
 
@@ -35,25 +38,25 @@ export default function AboutYasmineScreen() {
         {p.school} · {p.major} · Class of {p.expectedGraduation}
       </Text>
 
-      <Section title="Who Yasmine Is" body={s.whoSheIs} />
-      <Section title="What She's Building" body={s.whatShesBuilding} />
-      <Section title="Technical Interests" body={s.technicalInterests} />
-      <Section title="Favorite Tools" body={s.favoriteTools} />
-      <Section title="Math + Curiosity" body={s.mathCuriosity} />
-      <Section title="Why Scaly Wings Exists" body={s.whyScalyWings} />
+      <Section title={t('about.whoSheIs')} body={s.whoSheIs} />
+      <Section title={t('about.whatShesBuilding')} body={s.whatShesBuilding} />
+      <Section title={t('about.technicalInterests')} body={s.technicalInterests} />
+      <Section title={t('about.favoriteTools')} body={s.favoriteTools} />
+      <Section title={t('about.mathCuriosity')} body={s.mathCuriosity} />
+      <Section title={t('about.whyScalyWings')} body={s.whyScalyWings} />
 
-      <Text style={styles.sectionTitle}>Skills</Text>
+      <LocalizedText i18nKey="about.skills" style={styles.sectionTitle} />
       <View style={styles.badges}>
         {p.skills.map((sk) => (
           <SkillBadge key={sk} label={sk} />
         ))}
       </View>
 
-      <Section title="Projects" body={p.projectHighlights} />
-      <Section title="Resume Snapshot" body={p.resumeBullets} />
-      <Section title="Recruiter Highlights" body={s.recruiterHighlights} />
+      <Section title={t('about.projects')} body={p.projectHighlights} />
+      <Section title={t('about.resumeSnapshot')} body={p.resumeBullets} />
+      <Section title={t('about.recruiterHighlights')} body={s.recruiterHighlights} />
 
-      <Text style={styles.sectionTitle}>Contact / Links</Text>
+      <LocalizedText i18nKey="about.contactLinks" style={styles.sectionTitle} />
       {p.links.map((l) => (
         <Text key={l.label} style={styles.link}>
           {l.label}: {l.url}

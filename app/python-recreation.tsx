@@ -1,38 +1,29 @@
-import { Text, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { ScreenShell } from '@/src/components/ScreenShell';
+import { LocalizedText } from '@/src/components/LocalizedText';
 import { colors } from '@/src/theme/colors';
 import { spacing } from '@/src/theme/spacing';
 import { typography } from '@/src/theme/typography';
 
-const WEEKS = [
-  { week: 1, focus: 'Python classes & game objects' },
-  { week: 2, focus: 'Flutter Flight in pygame' },
-  { week: 3, focus: 'Larva Leaf Race grid algorithms' },
-  { week: 4, focus: 'Pupa Math Boost + score analytics (pandas/matplotlib)' },
-];
-
 export default function PythonRecreationScreen() {
+  const { t } = useTranslation();
+
   return (
     <ScreenShell>
-      <Text style={styles.heading}>Python Recreation Guide</Text>
-      <Text style={styles.body}>
-        Yasmine can rebuild every game engine in Python. The full guide lives in
-        docs/PYTHON_RECREATION_GUIDE.md in this repository.
-      </Text>
-      <Text style={styles.sectionTitle}>4-week path (summary)</Text>
-      {WEEKS.map((w) => (
-        <Text key={w.week} style={styles.week}>
-          Week {w.week}: {w.focus}
-        </Text>
-      ))}
-      <Text style={styles.sectionTitle}>Recommended stack</Text>
-      <Text style={styles.bullet}>• pygame — games</Text>
-      <Text style={styles.bullet}>• tkinter — simple UI</Text>
-      <Text style={styles.bullet}>• pandas — score logs</Text>
-      <Text style={styles.bullet}>• matplotlib — progress charts</Text>
-      <Text style={styles.tip}>
-        Game logic in src/games/*/engine.ts mirrors what you will write in Python classes.
-      </Text>
+      <LocalizedText i18nKey="python.title" style={styles.heading} />
+      <LocalizedText i18nKey="python.body" style={styles.body} />
+      <LocalizedText i18nKey="python.weekPath" style={styles.sectionTitle} />
+      <LocalizedText i18nKey="python.week1" style={styles.week} />
+      <LocalizedText i18nKey="python.week2" style={styles.week} />
+      <LocalizedText i18nKey="python.week3" style={styles.week} />
+      <LocalizedText i18nKey="python.week4" style={styles.week} />
+      <LocalizedText i18nKey="python.recommendedStack" style={styles.sectionTitle} />
+      <LocalizedText i18nKey="python.pygame" style={styles.bullet} />
+      <LocalizedText i18nKey="python.tkinter" style={styles.bullet} />
+      <LocalizedText i18nKey="python.pandas" style={styles.bullet} />
+      <LocalizedText i18nKey="python.matplotlib" style={styles.bullet} />
+      <LocalizedText i18nKey="python.tip" style={styles.tip} />
     </ScreenShell>
   );
 }

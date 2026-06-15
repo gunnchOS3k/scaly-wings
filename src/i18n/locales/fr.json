@@ -1,0 +1,290 @@
+{
+  "_meta": {
+    "language": "French",
+    "status": "draft-human-review-required",
+    "reviewer": "Yasmine review required"
+  },
+  "home": {
+    "title": "Scaly Wings",
+    "subtitle": "Une arcade papillons, un labo de maths et un portfolio pour Yasmine Dweir",
+    "credit": "Une aventure Lépidoptère · Yasmine Dweir & gunnchOS3k MLV",
+    "playArcade": "Jouer à l'arcade",
+    "probabilityWing": "Aile Probabilité",
+    "cocoonConsole": "Mode Console Cocoon",
+    "aboutYasmine": "À propos de Yasmine",
+    "portfolio": "Portfolio",
+    "pythonGuide": "Guide de recréation Python",
+    "publishing": "Liste de publication",
+    "settings": "Paramètres",
+    "language": "Langue"
+  },
+  "arcade": {
+    "title": "Arcade",
+    "heading": "Arcade Papillons",
+    "subtitle": "Tactile · clavier · compatible manette",
+    "sections": {
+      "core": "Arcade principale",
+      "probability": "Aile Probabilité",
+      "console": "Jeux console",
+      "tools": "Outils système"
+    },
+    "badges": {
+      "touch": "Tactile",
+      "keyboard": "Clavier",
+      "controller": "Manette",
+      "multiplayer": "Multijoueur local",
+      "bigScreen": "Grand écran"
+    },
+    "games": {
+      "flutterFlight": {
+        "title": "Flutter Flight",
+        "description": "Flap through glowing gates."
+      },
+      "larvaLeafRace": {
+        "title": "Larva Leaf Race",
+        "description": "Two larva · grid race · local multiplayer."
+      },
+      "pupaMathBoost": {
+        "title": "Pupa Math Boost",
+        "description": "Math speeds metamorphosis."
+      },
+      "probabilityWing": {
+        "title": "Probability Wing",
+        "description": "Chance, noise & stochastic flight."
+      },
+      "pinball": {
+        "title": "Scaly Wings Pinball",
+        "description": "Nectar pearl · garden bumpers · wing flippers."
+      },
+      "wingRun": {
+        "title": "Wing Run: Nectar Valley",
+        "description": "Side-scrolling butterfly platformer."
+      },
+      "controllerTest": {
+        "title": "Controller Test",
+        "description": "Debug gamepads & mapped actions."
+      },
+      "cocoonConsole": {
+        "title": "Cocoon Console Mode",
+        "description": "Handheld · tabletop · big screen setup."
+      },
+      "settings": {
+        "title": "Settings",
+        "description": "Mode, accessibility, input debug."
+      }
+    }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "languageSection": "Langue",
+    "currentLanguage": "Langue actuelle",
+    "deviceLanguage": "Langue du appareil détectée",
+    "resetToDevice": "Réinitialiser à la langue du appareil",
+    "arabicRtlNote": "L'arabe utilise une mise en page de droite à gauche.",
+    "draftReviewNote": "Les traductions brouillon doivent être relues par Yasmine/Edmund.",
+    "languageTest": "Language test screen",
+    "preferredMode": "Preferred mode",
+    "modes": {
+      "phone": "Phone",
+      "tabletop": "Tabletop",
+      "cocoonConsole": "Cocoon Console"
+    },
+    "accessibility": "Accessibility",
+    "reducedMotion": "Reduced motion",
+    "highContrast": "High contrast",
+    "panels": "Panels",
+    "showLearningPanels": "Show learning panels",
+    "showRecruiterPanels": "Show recruiter panels",
+    "inputDebug": "Input debug overlay",
+    "haptics": "Haptics (placeholder)"
+  },
+  "language": {
+    "title": "Langue",
+    "choose": "Choisir la langue",
+    "reviewNeeded": "Relecture requise",
+    "draft": "Traduction brouillon",
+    "rtlRestartMessage": "Redémarrez Scaly Wings pour appliquer pleinement la direction RTL arabe.",
+    "resetSuccess": "Language reset to device default.",
+    "sampleHello": "Bonjour depuis Scaly Wings !"
+  },
+  "about": {
+    "title": "About Yasmine",
+    "whoSheIs": "Who Yasmine Is",
+    "whatShesBuilding": "What She's Building",
+    "technicalInterests": "Technical Interests",
+    "favoriteTools": "Favorite Tools",
+    "mathCuriosity": "Math + Curiosity",
+    "whyScalyWings": "Why Scaly Wings Exists",
+    "skills": "Skills",
+    "projects": "Projects",
+    "resumeSnapshot": "Resume Snapshot",
+    "recruiterHighlights": "Recruiter Highlights",
+    "contactLinks": "Contact / Links",
+    "skillsDemonstrated": "Skills demonstrated through Scaly Wings"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "Featured work and collaborations. FINDS is listed as inspiration only — it lives in its own repository.",
+    "languagesTitle": "Languages represented in Scaly Wings",
+    "languagesList": "English · Arabic · French · Spanish · Finnish"
+  },
+  "probability": {
+    "title": "Probability Wing",
+    "subtitle": "Chance, Noise & Stochastic Flight",
+    "fullTitle": "Probability Wing: Chance, Noise & Stochastic Flight",
+    "learnSubtitle": "Learn probability by helping butterflies make decisions under uncertainty.",
+    "disclaimer": "Educational math simulator only. Pollen tokens and nectar points are fictional — no real money, betting, or payments.",
+    "mathGarden": "Math Garden — three mini-labs",
+    "docsHint": "Syllabus mapping: docs/PROBABILITY_TO_GAME_MECHANICS.md · Python: docs/PYTHON_PROBABILITY_RECREATION_GUIDE.md",
+    "games": {
+      "chanceGarden": {
+        "title": "Butterfly Chance Garden",
+        "description": "Pollen tokens, PMF, expected value, variance, law of large numbers."
+      },
+      "noiseNectar": {
+        "title": "Noise Nectar Rescue",
+        "description": "Hidden nectar, noisy sensors, MMSE estimation, MSE tracking."
+      },
+      "poissonPond": {
+        "title": "Poisson Pond Crossing",
+        "description": "λ-driven arrivals, exponential waits, crossing simulations."
+      }
+    },
+    "concepts": {
+      "theoryVsExperiment": "Theory vs Experiment",
+      "expectedValue": "Expected Value",
+      "variance": "Variance",
+      "randomWalk": "Random Walk",
+      "poissonProcess": "Poisson Process",
+      "mmseEstimation": "MMSE Estimation",
+      "signal": "Signal",
+      "noise": "Noise",
+      "observation": "Observation",
+      "error": "Error",
+      "meanSquaredError": "Mean Squared Error",
+      "probability": "Probability",
+      "estimator": "Estimator",
+      "poissonArrivals": "Poisson Arrivals"
+    }
+  },
+  "cocoon": {
+    "title": "Cocoon Console Mode",
+    "subtitle": "Phone as a tiny console — handheld, tabletop, or big screen when your device supports mirroring/HDMI.",
+    "handheld": "Handheld Mode",
+    "handheldDesc": "Phone portrait — touch-first, one player.",
+    "tabletop": "Tabletop Mode",
+    "tabletopDesc": "Share one device — split touch or multiple controllers.",
+    "bigScreen": "Big Screen Mode",
+    "bigScreenDesc": "Landscape + mirror/cast/HDMI when your OS supports it. Scaly Wings does not force HDMI output.",
+    "bigScreenPlaybook": "Big Screen playbook",
+    "bigScreenNote": "Scaly Wings is big-screen ready when your device supports external display or screen mirroring. See docs/BIG_SCREEN_PLAYBOOK.md.",
+    "controllerSetup": "Controller Setup",
+    "connectController": "Connect a controller",
+    "castMirror": "Cast or mirror your screen",
+    "bigScreenReady": "Big-screen ready when your device supports it",
+    "refreshControllers": "Refresh controllers",
+    "localMultiplayer": "Local multiplayer setup",
+    "consoleGames": "Console-ready games",
+    "supportedGames": "Supported games",
+    "bigScreenSteps": [
+      "Rotate phone to landscape (optional but recommended).",
+      "Pair PS5/Xbox controller via Bluetooth or USB-C where supported.",
+      "Use Android DisplayPort/USB-C or iPhone external display/mirroring if hardware allows.",
+      "Open a game — controller or touch backup on phone."
+    ]
+  },
+  "publish": {
+    "title": "Publishing Checklist",
+    "subtitle": "Full details in docs/APP_STORE_READINESS.md and docs/ANDROID_PLAY_STORE_READINESS.md",
+    "iosAppStore": "iOS App Store",
+    "googlePlay": "Google Play",
+    "expoGo": "Expo Go",
+    "androidApk": "Android APK",
+    "iosInternal": "iOS Internal Build",
+    "testflight": "TestFlight",
+    "appStore": "App Store",
+    "buildChecklist": "Build Checklist"
+  },
+  "python": {
+    "title": "Python Recreation Guide",
+    "body": "Yasmine can rebuild every game engine in Python. The full guide lives in docs/PYTHON_RECREATION_GUIDE.md in this repository.",
+    "weekPath": "4-week path (summary)",
+    "week1": "Week 1: Python classes & game objects",
+    "week2": "Week 2: Flutter Flight in pygame",
+    "week3": "Week 3: Larva Leaf Race grid algorithms",
+    "week4": "Week 4: Pupa Math Boost + score analytics (pandas/matplotlib)",
+    "recommendedStack": "Recommended stack",
+    "pygame": "pygame — games",
+    "tkinter": "tkinter — simple UI",
+    "pandas": "pandas — score logs",
+    "matplotlib": "matplotlib — progress charts",
+    "tip": "Game logic in src/games/*/engine.ts mirrors what you will write in Python classes."
+  },
+  "games": {
+    "start": "Démarrer",
+    "pause": "Pause",
+    "resume": "Reprendre",
+    "restart": "Recommencer",
+    "gameOver": "Fin de partie",
+    "score": "Score",
+    "highScore": "Meilleur score",
+    "best": "Record",
+    "levelComplete": "Level Complete",
+    "correct": "Correct",
+    "incorrect": "Incorrect",
+    "tryAgain": "Try Again",
+    "next": "Next",
+    "back": "Retour",
+    "backToArcade": "Retour à l'arcade",
+    "playAgain": "Rejouer",
+    "flap": "Battre des ailes !",
+    "learningPanel": "Learning Panel",
+    "dataPanel": "Data Panel",
+    "pythonBridge": "Python Bridge",
+    "recruiterSignal": "Recruiter Signal",
+    "mathUniversalNote": "Math is a universal language — numbers stay the same; explanations follow your language.",
+    "flutterFlight": {
+      "title": "Flutter Flight",
+      "tapToFlap": "Tap or press Space to flap"
+    }
+  },
+  "languageTest": {
+    "title": "Language Test",
+    "currentLanguage": "Current language",
+    "direction": "Text direction",
+    "deviceLocale": "Device locale",
+    "savedLanguage": "Saved language",
+    "sampleBlock": "Sample text in all languages",
+    "rtlSample": "Arabic RTL sample",
+    "missingKeyTest": "Missing key fallback test",
+    "missingKeyLabel": "This key should fall back to English",
+    "buttonsSample": "Translated buttons"
+  },
+  "nav": {
+    "arcade": "Arcade",
+    "aboutYasmine": "About Yasmine",
+    "portfolio": "Portfolio",
+    "publishing": "Publishing",
+    "pythonGuide": "Python Guide",
+    "probabilityWing": "Probability Wing",
+    "cocoonConsole": "Cocoon Console",
+    "controllerTest": "Controller Test",
+    "settings": "Settings",
+    "pinball": "Scaly Wings Pinball",
+    "wingRun": "Wing Run",
+    "flutterFlight": "Flutter Flight",
+    "chanceGarden": "Chance Garden",
+    "noiseNectar": "Noise Nectar",
+    "poissonPond": "Poisson Pond",
+    "larvaLeafRace": "Larva Leaf Race",
+    "pupaMathBoost": "Pupa Math Boost",
+    "languageTest": "Language Test"
+  },
+  "common": {
+    "loading": "Loading…",
+    "error": "Something went wrong",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "save": "Save"
+  }
+}

@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useTranslation } from 'react-i18next';
 import { ScreenShell } from '@/src/components/ScreenShell';
 import { HotPinkButton } from '@/src/components/HotPinkButton';
-import { DISPLAY_MODES, BIG_SCREEN_STEPS } from './displayModes';
+import { LocalizedText } from '@/src/components/LocalizedText';
 import { getAssignmentSummary, assignControllerToPlayer } from './controllerAssignment';
 import { inputManager } from '@/src/input/InputManager';
 import { ARCADE_GAMES } from '@/src/data/arcadeCatalog';
@@ -12,12 +13,17 @@ import { colors } from '@/src/theme/colors';
 import { spacing } from '@/src/theme/spacing';
 import { typography } from '@/src/theme/typography';
 
-const CONSOLE_GAMES = ARCADE_GAMES.filter(
-  (g) => g.badges.controller || g.badges.bigScreen
-);
+const DISPLAY_MODES: { id: DisplayMode; titleKey: string; descKey: string }[] = [
+  { id: 'handheld', titleKey: 'cocoon.handheld', descKey: 'cocoon.handheldDesc' },
+  { id: 'tabletop', titleKey: 'cocoon.tabletop', descKey: 'cocoon.tabletopDesc' },
+  { id: 'bigScreen', titleKey: 'cocoon.bigScreen', descKey: 'cocoon.bigScreenDesc' },
+];
+
+const CONSOLE_GAMES = ARCADE_GAMES.filter((g) => g.badges.controller || g.badges.bigScreen);
 
 export function CocoonConsoleScreen() {
   const router = useRouter();
+  const { t } = useTranslation();
   const [mode, setMode] = useState<DisplayMode>('handheld');
   const [assignments, setAssignments] = useState<string[]>([]);
 
@@ -27,43 +33,41 @@ export function CocoonConsoleScreen() {
   };
 
   const pads = inputManager.listGamepads();
+  const steps = t('cocoon.bigScreenSteps', { returnObjects: true }) as string[];
 
   return (
     <ScreenShell>
-      <Text style={styles.title}>Cocoon Console Mode</Text>
-      <Text style={styles.sub}>
-        Phone as a tiny console — handheld, tabletop, or big screen when your device supports
-        mirroring/HDMI.
-      </Text>
+      <LocalizedText i18nKey="cocoon.title" style={styles.title} />
+      <LocalizedText i18nKey="cocoon.subtitle" style={styles.sub} />
 
       {DISPLAY_MODES.map((m) => (
         <HotPinkButton
           key={m.id}
-          label={`${m.title}${mode === m.id ? ' ✓' : ''}`}
+          label={`${t(m.titleKey)}${mode === m.id ? ' ✓' : ''}`}
           variant={mode === m.id ? 'primary' : 'secondary'}
           onPress={() => setMode(m.id)}
         />
       ))}
 
-      <Text style={styles.body}>{DISPLAY_MODES.find((d) => d.id === mode)?.description}</Text>
+      <Text style={styles.body}>
+        {t(DISPLAY_MODES.find((d) => d.id === mode)?.descKey ?? 'cocoon.handheldDesc')}
+      </Text>
 
       {mode === 'bigScreen' && (
         <View style={styles.box}>
-          <Text style={styles.boxTitle}>Big Screen playbook</Text>
-          {BIG_SCREEN_STEPS.map((s) => (
-            <Text key={s} style={styles.step}>
-              • {s}
-            </Text>
-          ))}
-          <Text style={styles.note}>
-            Scaly Wings is big-screen ready when your device supports external display or screen
-            mirroring. See docs/BIG_SCREEN_PLAYBOOK.md.
-          </Text>
+          <LocalizedText i18nKey="cocoon.bigScreenPlaybook" style={styles.boxTitle} />
+          {Array.isArray(steps) &&
+            steps.map((s) => (
+              <Text key={s} style={styles.step}>
+                • {s}
+              </Text>
+            ))}
+          <LocalizedText i18nKey="cocoon.bigScreenNote" style={styles.note} />
         </View>
       )}
 
-      <Text style={styles.section}>Local multiplayer setup</Text>
-      <HotPinkButton label="Refresh controllers" variant="secondary" onPress={refresh} />
+      <LocalizedText i18nKey="cocoon.localMultiplayer" style={styles.section} />
+      <HotPinkButton label={t('cocoon.refreshControllers')} variant="secondary" onPress={refresh} />
       {pads.map((gp) => (
         <View key={gp.index} style={styles.row}>
           <Text style={styles.rowText}>{gp.label}</Text>
@@ -93,18 +97,18 @@ export function CocoonConsoleScreen() {
         </Text>
       ))}
 
-      <Text style={styles.section}>Supported games</Text>
+      <LocalizedText i18nKey="cocoon.supportedGames" style={styles.section} />
       {CONSOLE_GAMES.map((g) => (
         <HotPinkButton
           key={g.route}
-          label={g.title}
+          label={t(g.titleKey)}
           variant="secondary"
           onPress={() => router.push(g.route as never)}
         />
       ))}
 
-      <HotPinkButton label="Controller Test" onPress={() => router.push('/controller-test')} />
-      <HotPinkButton label="Settings" variant="secondary" onPress={() => router.push('/settings')} />
+      <HotPinkButton label={t('nav.controllerTest')} onPress={() => router.push('/controller-test')} />
+      <HotPinkButton label={t('nav.settings')} variant="secondary" onPress={() => router.push('/settings')} />
     </ScreenShell>
   );
 }

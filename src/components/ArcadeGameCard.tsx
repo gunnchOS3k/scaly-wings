@@ -1,16 +1,11 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import type { ArcadeEntry } from '@/src/data/arcadeCatalog';
+import { BADGE_KEYS } from '@/src/data/arcadeCatalog';
+import { useLanguage } from '@/src/i18n/useLanguage';
 import { colors } from '@/src/theme/colors';
 import { spacing } from '@/src/theme/spacing';
 import { typography } from '@/src/theme/typography';
-
-const BADGE_LABELS: Record<string, string> = {
-  touch: 'Touch',
-  keyboard: 'Keyboard',
-  controller: 'Controller',
-  multiplayer: 'Local MP',
-  bigScreen: 'Big Screen',
-};
 
 interface ArcadeGameCardProps {
   entry: ArcadeEntry;
@@ -18,21 +13,24 @@ interface ArcadeGameCardProps {
 }
 
 export function ArcadeGameCard({ entry, onPress }: ArcadeGameCardProps) {
+  const { t } = useTranslation();
+  const { textAlign } = useLanguage();
+  const title = t(entry.titleKey);
   const activeBadges = Object.entries(entry.badges)
     .filter(([, v]) => v)
-    .map(([k]) => BADGE_LABELS[k] ?? k);
+    .map(([k]) => t(BADGE_KEYS[k as keyof typeof BADGE_KEYS]));
 
   return (
     <Pressable
       onPress={onPress}
       style={({ pressed }) => [styles.card, pressed && styles.pressed]}
       accessibilityRole="button"
-      accessibilityLabel={`Play ${entry.title}`}
+      accessibilityLabel={`Play ${title}`}
     >
       <Text style={styles.emoji}>{entry.emoji}</Text>
       <View style={styles.textBlock}>
-        <Text style={styles.title}>{entry.title}</Text>
-        <Text style={styles.description}>{entry.description}</Text>
+        <Text style={[styles.title, { textAlign }]}>{title}</Text>
+        <Text style={[styles.description, { textAlign }]}>{t(entry.descriptionKey)}</Text>
         <View style={styles.badges}>
           {activeBadges.map((b) => (
             <Text key={b} style={styles.badge}>
@@ -61,11 +59,11 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: spacing.md,
     marginBottom: spacing.md,
-    borderLeftWidth: 6,
-    borderLeftColor: colors.hotPink,
+    borderStartWidth: 6,
+    borderStartColor: colors.hotPink,
   },
   pressed: { opacity: 0.92 },
-  emoji: { fontSize: 32, marginRight: spacing.md },
+  emoji: { fontSize: 32, marginEnd: spacing.md },
   textBlock: { flex: 1 },
   title: {
     fontSize: typography.sizes.lg,

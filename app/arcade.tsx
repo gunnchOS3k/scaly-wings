@@ -1,32 +1,34 @@
-import { Text, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { ScreenShell } from '@/src/components/ScreenShell';
 import { ArcadeGameCard } from '@/src/components/ArcadeGameCard';
-import { ARCADE_GAMES } from '@/src/data/arcadeCatalog';
+import { LocalizedText } from '@/src/components/LocalizedText';
+import { ARCADE_GAMES, ARCADE_SECTION_KEYS } from '@/src/data/arcadeCatalog';
 import { colors } from '@/src/theme/colors';
 import { spacing } from '@/src/theme/spacing';
 import { typography } from '@/src/theme/typography';
 
 const SECTIONS = [
-  { key: 'core', title: 'Core Arcade' },
-  { key: 'probability', title: 'Probability Wing' },
-  { key: 'console', title: 'Console Arcade' },
-  { key: 'tools', title: 'System Tools' },
-] as const;
+  { key: 'core' as const, titleKey: ARCADE_SECTION_KEYS.core },
+  { key: 'probability' as const, titleKey: ARCADE_SECTION_KEYS.probability },
+  { key: 'console' as const, titleKey: ARCADE_SECTION_KEYS.console },
+  { key: 'tools' as const, titleKey: ARCADE_SECTION_KEYS.tools },
+];
 
 export default function ArcadeScreen() {
   const router = useRouter();
+  const { t } = useTranslation();
 
   return (
     <ScreenShell>
-      <Text style={styles.heading}>Butterfly Arcade</Text>
-      <Text style={styles.sub}>Touch · keyboard · controller-ready</Text>
+      <LocalizedText i18nKey="arcade.heading" style={styles.heading} />
+      <LocalizedText i18nKey="arcade.subtitle" style={styles.sub} />
       {SECTIONS.map((sec) => {
         const games = ARCADE_GAMES.filter((g) => g.section === sec.key);
         if (games.length === 0) return null;
         return (
           <View key={sec.key}>
-            <Text style={styles.section}>{sec.title}</Text>
+            <LocalizedText i18nKey={sec.titleKey} style={styles.section} />
             {games.map((g) => (
               <ArcadeGameCard
                 key={g.route}

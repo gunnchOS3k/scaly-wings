@@ -1,6 +1,7 @@
-import { Text, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { ScreenShell } from '@/src/components/ScreenShell';
 import { PortfolioCard } from '@/src/components/PortfolioCard';
+import { LocalizedText } from '@/src/components/LocalizedText';
 import { portfolioProjects } from '@/src/data/portfolioProjects';
 import { colors } from '@/src/theme/colors';
 import { spacing } from '@/src/theme/spacing';
@@ -11,11 +12,10 @@ export default function PortfolioScreen() {
 
   return (
     <ScreenShell>
-      <Text style={styles.heading}>Portfolio</Text>
-      <Text style={styles.sub}>
-        Featured work and collaborations. FINDS is listed as inspiration only — it lives in its
-        own repository.
-      </Text>
+      <LocalizedText i18nKey="portfolio.title" style={styles.heading} />
+      <LocalizedText i18nKey="portfolio.subtitle" style={styles.sub} />
+      <LocalizedText i18nKey="portfolio.languagesTitle" style={styles.languagesTitle} />
+      <LocalizedText i18nKey="portfolio.languagesList" style={styles.languagesList} />
       {sorted.map((project) => (
         <PortfolioCard key={project.id} project={project} />
       ))}
@@ -29,5 +29,11 @@ const styles = StyleSheet.create({
     fontWeight: typography.weights.bold,
     color: colors.hotPink,
   },
-  sub: { color: colors.charcoal, marginBottom: spacing.lg, lineHeight: 22 },
+  sub: { color: colors.charcoal, marginBottom: spacing.md, lineHeight: 22 },
+  languagesTitle: {
+    fontWeight: typography.weights.bold,
+    color: colors.purple,
+    marginTop: spacing.sm,
+  },
+  languagesList: { color: colors.charcoal, marginBottom: spacing.lg, lineHeight: 22 },
 });
