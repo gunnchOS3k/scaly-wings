@@ -38,19 +38,24 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 function LanguageContextBridge({ children }: { children: ReactNode }) {
   const { t, i18n: i18nInstance } = useTranslation();
-  const [ready, setReady] = useState(false);
+  const [ready, setReady] = useState(true);
   const [savedLanguage, setSavedLanguage] = useState<LanguageCode | null>(null);
-  const [deviceLanguage] = useState(getDeviceLanguage);
+  const [deviceLanguage, setDeviceLanguage] = useState<LanguageCode>('en');
   const currentLanguage = (i18nInstance.language?.split('-')[0] ?? 'en') as LanguageCode;
 
   useEffect(() => {
     let mounted = true;
     (async () => {
-      await initI18n();
-      const saved = await getSavedLanguage();
-      if (mounted) {
+      try {
+        await initI18n();
+        const saved = await getSavedLanguage();
+        if (!mounted) return;
         setSavedLanguage(saved);
-        setReady(true);
+        setDeviceLanguage(getDeviceLanguage());
+      } catch {
+        // Keep the synchronous English shell if device storage or locale APIs fail.
+      } finally {
+        if (mounted) setReady(true);
       }
     })();
     return () => {
@@ -93,8 +98,6 @@ function LanguageContextBridge({ children }: { children: ReactNode }) {
     }),
     [ready, currentLanguage, deviceLanguage, savedLanguage, setLanguage, resetLanguage, t]
   );
-
-  if (!ready) return null;
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }

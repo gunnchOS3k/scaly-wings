@@ -1,0 +1,21 @@
+{
+  "repo": "scaly-wings",
+  "productName": "Scaly Wings",
+  "family": "Games",
+  "classification": "GAME_LANDING_WORKER",
+  "acceptedSha": "2c684c484a07dab53f297cf1e555277ec2a4fe28",
+  "status": "STAGING_WORKER",
+  "summary": "A Lepidoptera-led adventure created with Yasmine Dweir and gunnchOS3k MLV. No Worker-compatible playable build was verified.",
+  "capabilities": [
+    "Read the concept and current availability",
+    "Open the source repository"
+  ],
+  "limitations": [
+    "No Play action is offered",
+    "No gameplay is hosted here"
+  ],
+  "sourceUrl": "https://github.com/gunnchOS3k/scaly-wings",
+  "returnUrlEnv": "GUNNCHOS_PORTAL_URL",
+  "returnUrl": "https://gunnchos-site.gunnchos-finds.workers.dev",
+  "workerName": "scaly-wings-web"
+}
