@@ -17,7 +17,6 @@ const SECTIONS = [
 
 export default function ArcadeScreen() {
   const router = useRouter();
-  const { t } = useTranslation();
 
   return (
     <ScreenShell>

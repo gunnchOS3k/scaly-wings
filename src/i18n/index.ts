@@ -17,34 +17,46 @@ export { supportedLanguages, getLanguageMeta, isSupportedLanguage };
 
 let initPromise: Promise<typeof i18n> | null = null;
 
+const i18nOptions = {
+  resources,
+  lng: 'en' as const,
+  fallbackLng: 'en' as const,
+  interpolation: { escapeValue: false },
+  react: { useSuspense: false },
+  returnNull: false,
+  returnEmptyString: false,
+  initImmediate: false,
+  parseMissingKeyHandler: (key: string) => {
+    logMissingTranslationKey(key, i18n.language);
+    return key;
+  },
+};
+
+/** Synchronous English bootstrap so static export and hydration can paint before device locale loads. */
+export function ensureI18nSync(): typeof i18n {
+  if (!i18n.isInitialized) {
+    i18n.use(initReactI18next).init(i18nOptions);
+  }
+  return i18n;
+}
+
+ensureI18nSync();
+
 export function getDeviceLanguage(): LanguageCode {
   const locale = Localization.getLocales()[0]?.languageCode;
   return getLanguageCodeFromLocale(locale);
 }
 
 export async function initI18n(): Promise<typeof i18n> {
+  ensureI18nSync();
   if (initPromise) return initPromise;
 
   initPromise = (async () => {
     const saved = await getSavedLanguage();
     const initial = saved ?? getDeviceLanguage();
-
-    if (!i18n.isInitialized) {
-      await i18n.use(initReactI18next).init({
-        resources,
-        lng: initial,
-        fallbackLng: 'en',
-        interpolation: { escapeValue: false },
-        react: { useSuspense: false },
-        returnNull: false,
-        returnEmptyString: false,
-        parseMissingKeyHandler: (key) => {
-          logMissingTranslationKey(key, i18n.language);
-          return key;
-        },
-      });
+    if (i18n.language !== initial) {
+      await i18n.changeLanguage(initial);
     }
-
     maybeApplyRTL(initial);
     return i18n;
   })();
